@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
 
         Assignment8 assignment = new Assignment8();
-        ExecutorService executor = Executors.newFixedThreadPool(10);
+        ExecutorService executor = Executors.newCachedThreadPool();
         List<CompletableFuture<List<Integer>>> futures = new ArrayList<>();
 
         for (int i = 0; i < 1000; i++) {
@@ -26,7 +26,7 @@ public class Main {
         Map<Integer, Long> frequencyMap = allNumbers.stream()
                 .collect(Collectors.groupingBy(num -> num, Collectors.counting()));
 
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 0; i <= 14; i++) {
             System.out.print(i + "=" + frequencyMap.getOrDefault(i, 0L) + ", ");
         }
 
